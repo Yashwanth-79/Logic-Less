@@ -60,3 +60,66 @@ def maxArea(self, height: List[int]) -> int:
         arr[0] = last
     return arr
     """
+
+"""Strings"""
+# Reverse String 
+n = lens(s)
+l = 0
+r = n-1
+while l<r:
+    s[l],s[r]=s[r],s[l]
+    l+=1
+    r-=1
+
+# valid palindrome
+def isPalindrome(self, s: str) -> bool:
+  s= ''.join(filter(str.isalnum,s)).lower
+  n = len(s)
+  l = 0
+  r = n-1
+  while l<r:
+    if s[l]!=s[r]:
+      return False
+    l+=1
+    r-=1
+ return True 
+
+# Longest Substring Without Repeating Characters 
+def lengthOfLongestSubstring(self, s: str) -> int:
+    char_set = set()
+    left = 0
+    max_length = 0
+
+    for right in range(len(s)):
+        while s[right] in char_set:
+            char_set.remove(s[left])
+            left += 1
+        char_set.add(s[right])
+        max_length = max(max_length, right - left + 1)
+
+    return max_length
+
+# longestPalindrome(self, s: str) -> str:
+def longestPalindrome(self, s: str) -> str:
+        def expand_around_center(left, right):
+            while left >= 0 and right < len(s) and s[left] == s[right]:
+                left -= 1
+                right += 1
+            return s[left+1:right]  # Return the longest palindrome found
+
+        longest = ""
+        for i in range(len(s)):
+            odd_pal = expand_around_center(i, i)     # Odd-length palindrome
+            even_pal = expand_around_center(i, i+1)  # Even-length palindrome
+            longest = max(longest, odd_pal, even_pal, key=len)
+
+        return longest
+
+# Group Anagrams
+def groupAnagrams(self, strs):
+    anagram_map = defaultdict(list)
+
+    for word in strs:
+        sorted_word = ''.join(sorted(word))
+        anagram_map[sorted_word].append(word)
+    return list(anagram_map.values())  

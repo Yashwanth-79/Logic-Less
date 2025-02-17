@@ -1,3 +1,4 @@
+-----------------------------------------------------------------------
 """ ARRAYS """
 # Two Sum
 def twoSum(self, nums: List[int], target: int) -> List[int]:
@@ -60,7 +61,7 @@ def maxArea(self, height: List[int]) -> int:
         arr[0] = last
     return arr
     """
-
+----------------------------------------------------------------------
 """Strings"""
 # Reverse String 
 n = lens(s)

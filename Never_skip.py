@@ -124,3 +124,32 @@ def groupAnagrams(self, strs):
         sorted_word = ''.join(sorted(word))
         anagram_map[sorted_word].append(word)
     return list(anagram_map.values())  
+
+------------------------------------------------------------------------------
+""" Linked List """
+def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        prev = None
+        curr = head
+        while curr is not None:
+            next_node = curr.next  # Save next node
+            curr.next = prev  # Reverse the pointer
+            prev = curr  # Move prev forward
+            curr = next_node  # Move curr forward
+        return prev
+
+def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+    dummy = ListNode(0)
+    dummy.next = head
+    first = dummy
+    second = dummy
+
+    for _ in range(n + 1):
+        first = first.next
+
+    while first is not None:
+        first = first.next
+        second = second.next
+
+    second.next = second.next.next
+
+    return dummy.next

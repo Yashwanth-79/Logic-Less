@@ -153,3 +153,21 @@ def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNod
     second.next = second.next.next
 
     return dummy.next
+
+def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+    
+    merge = ListNode()
+    node = merge
+
+    while list1 and list2:
+        if list1.val <= list2.val:
+            node.next = ListNode(list1.val)
+            list1 = list1.next
+        else:
+            node.next = ListNode(list2.val)
+            list2 = list2.next
+
+        node = node.next               
+
+    node.next = list1 or list2
+        return merge.next
